@@ -1,0 +1,111 @@
+<div class="card">
+  <p-table
+    #dt1
+    [value]="customers1"
+    dataKey="id"
+    styleClass="p-datatable-customers"
+    [rows]="2"
+    [paginator]="true"
+    [totalRecords]="100"
+    [pageLinks]="50"
+    [pageLinks]="3"
+    [responsive]="true"
+    [showJumpToPageDropdown]="true"
+    [loading]="false"
+    [lazy]="true"
+    (onPage)="onPageChange($event, dt1.dataToRender.length)"
+    [rowsPerPageOptions]="[2,5,10,15,20]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">
+          Name <p-sortIcon field="name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="country">
+          Country <p-sortIcon field="country"></p-sortIcon>
+        </th>
+        <th pSortableColumn="representative.name">
+          Representative <p-sortIcon field="representative.name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="status">
+          Status <p-sortIcon field="status"></p-sortIcon>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <input
+            pInputText
+            type="text"
+            (input)="filter($event, 'name')"
+            [value]="nameFilter"
+            placeholder="Search by Name"
+            class="p-column-filter"
+          />
+        </th>
+        <th>
+          <input
+            pInputText
+            type="text"
+            (input)="filter($event, 'country.name')"
+            [value]="countryFilter"
+            placeholder="Search by Country"
+            class="p-column-filter"
+          />
+        </th>
+        <th>
+          <input
+            pInputText
+            type="text"
+            (input)="filter($event, 'representative.name')"
+            [value]="representativeNameFilter"
+            placeholder="Search by Representative"
+            class="p-column-filter"
+          />
+        </th>
+        <th>
+          <input
+            pInputText
+            type="text"
+            (input)="filter($event, 'status')"
+            [value]="statusFilter"
+            placeholder="Search by Status"
+            class="p-column-filter"
+          />
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer>
+      <tr [pSelectableRow]="customer">
+        <td>
+          <span class="p-column-title">Name</span>
+          {{ customer.name }}
+        </td>
+        <td>
+          <span class="p-column-title">Country</span>
+          {{ customer.country }}
+        </td>
+        <td>
+          <span class="p-column-title">Representative</span>
+          <img
+            [alt]="customer.representative.name"
+            src="{{ customer.representative.image }}"
+            width="32"
+            style="vertical-align: middle"
+          />
+          <span class="image-text">{{ customer.representative.name }}</span>
+        </td>
+        <td>
+          <span class="p-column-title">Status</span>
+          <span [class]="'customer-badge status-' + customer.status">{{
+            customer.status
+          }}</span>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="4">No customers found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

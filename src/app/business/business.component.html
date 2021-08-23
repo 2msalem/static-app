@@ -1,0 +1,29 @@
+<section  class="main d-flex justify-content-start">
+  <div class="sidebar" #sidebarMenu>
+    <p-sidebar [(visible)]="display" styleClass="h-100 sidebarMenu"  [dismissible]="false" [showCloseIcon]="false" [autoZIndex]="true" [baseZIndex]="0" appendTo="sidebarMenu">
+      <p-panelMenu [model]="sidebarItems" ></p-panelMenu>
+    </p-sidebar>
+  </div>
+  <div class="business-body">
+    <p-menubar [model]="headers">
+      <div class="input-group ">
+        <label for="search" class="input-group-text">
+          <i class="pi pi-search" style="font-size: 1rem"></i>
+        </label>
+        <input
+          type="text"
+          pInputText
+          class="form-control"
+          placeholder="Search"
+          aria-label="search"
+          id="search"
+        />
+      </div>
+    </p-menubar>
+
+    <router-outlet></router-outlet>
+  </div>
+  <!-- <p-button type="text" (click)="display = true" icon="pi pi-plus" label="Show"></p-button> -->
+
+</section>
+

@@ -1,0 +1,40 @@
+<div>
+  <div class="tables-filters mb-3 d-flex justify-content-between">
+    <div>
+      <label for="yearFilter" class="me-2">Year Filtration</label>
+      <p-dropdown
+        id="yearFilter"
+        (onChange)="updateYearSelected()"
+        [options]="yaersFilter"
+        [(ngModel)]="yearSelected"
+        optionLabel="name"
+      ></p-dropdown>
+    </div>
+    <div>
+      <p-button (onClick)="openPrintWindow()">Print</p-button>
+
+    </div>
+  </div>
+ <div #printData>
+  <p-table [value]="products" >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Year</th>
+        <th>Quantity</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>{{ product.code }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.year }}</td>
+        <td>{{ product.quantity }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+ </div>
+</div>

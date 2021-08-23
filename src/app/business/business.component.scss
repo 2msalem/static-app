@@ -1,0 +1,73 @@
+.main {
+  height: 100%;
+  background-color: rgb(243, 244, 245);
+  overflow: hidden;
+}
+
+:host {
+  ::ng-deep {
+    a:focus {
+      box-shadow: none !important;
+    }
+    p-sidebar {
+      .p-sidebar {
+        box-shadow: none !important;
+      }
+      .p-sidebar-header::after {
+        // padding-top: 2px;
+        height: 58px;
+        content: "IOTAH";
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding-top: 0.5rem;
+        padding-left: 1.5rem;
+      }
+      .p-sidebar-header {
+        border-bottom: 1px solid #dee2e6;
+        padding: 0px !important;
+      }
+      .p-sidebar-header {
+        justify-content: flex-start !important;
+      }
+      .p-sidebar-content {
+        height: 100%;
+      }
+      .p-panelmenu .p-panelmenu-header > a,
+      .p-panelmenu .p-panelmenu-header.p-highlight > a,
+      .p-panelmenu .p-panelmenu-content {
+        border: none !important;
+        background-color: transparent !important;
+      }
+
+      // .pi-chevron-right::before {
+      //   content: "";
+      // }
+      // .pi-chevron-right::after {
+      //   content: "\e901";
+      // }
+      .p-panelmenu {
+        // the chevron (arrow) icon
+        .p-panelmenu-icon {
+          order: 3; //here we are moving it to last position
+          margin-left: auto;
+        }
+      }
+      .p-panelmenu-header:hover{
+        background: #e9ecef;
+
+      }
+    }
+  }
+}
+
+.business-body {
+  width: calc(100% - 20rem);
+  height: 100%;
+}
+
+.sidebar {
+  width: 20rem;
+}
+
+.sidebar-header {
+}

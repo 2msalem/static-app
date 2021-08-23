@@ -1,0 +1,19 @@
+<div>
+  <p-button (onClick)="openPrintWindow()">Print</p-button>
+</div>
+<div class="d-flex justify-content-between flex-wrap" id="section-to-print" #printData>
+  <div>
+    <div class="card">
+      <h5>Vertical</h5>
+      <p-chart type="bar" [width]="'500px'" [data]="basicData" [options]="basicOptions" [responsive]="true"></p-chart>
+  </div>
+
+  </div>
+  <div>
+    <div class="card">
+      <h5>Vertical</h5>
+      <p-chart type="bar" [width]="'500px'" [data]="stackedData" [options]="stackedOptions" (onDataSelect)="selectData($event)"></p-chart>
+  </div>
+
+  </div>
+</div>

@@ -1,0 +1,27 @@
+:host {
+  ::ng-deep {
+    .tabmenu-panel-100 {
+      .p-panel {
+        height: 100%;
+      }
+      .p-panel-content {
+        position: relative;
+        height: 100%;
+      }
+      .p-toggleable-content {
+        height: calc(100% - 70px);
+      }
+    }
+  }
+}
+
+.home-page {
+  height: 100% !important;
+  position: relative;
+  overflow: auto;
+  padding-bottom: 100px !important;
+}
+
+.quarterly-truck-usage-report {
+  height: 500px;
+}

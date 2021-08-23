@@ -1,0 +1,20 @@
+<section class="home-page p-3 h-100">
+  <div class="">
+    <h1>Home Page</h1>
+  </div>
+  <p-tabMenu [model]="tabMenuItems" [activeItem]="tabMenuItems[0]"></p-tabMenu>
+  <p-panel [showHeader]="false" class="tabmenu-panel-100">
+    <router-outlet></router-outlet>
+  </p-panel>
+
+  <div class="quarterly-truck-usage-report">
+    <p-panel header="Quarterly Truck Usage Report" class="tabmenu-panel-100">
+      <app-quarterly-truck-usage-report></app-quarterly-truck-usage-report>
+    </p-panel>
+  </div>
+  <div class="quarterly-truck-usage-report">
+    <p-panel header="Quarterly Truck Usage Report" class="tabmenu-panel-100">
+      <app-truck-uasge-data></app-truck-uasge-data>
+    </p-panel>
+  </div>
+</section>
