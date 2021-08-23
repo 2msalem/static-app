@@ -2,20 +2,29 @@
   <p-table
     #dt1
     [value]="customers1"
-    dataKey="id"
+    dataKey="name"
     styleClass="p-datatable-customers"
     [rows]="2"
+    [columns]='cols'
     [paginator]="true"
-    [totalRecords]="100"
-    [pageLinks]="50"
-    [pageLinks]="3"
     [responsive]="true"
+    selectionMode="multiple"
     [showJumpToPageDropdown]="true"
     [loading]="false"
-    [lazy]="true"
     (onPage)="onPageChange($event, dt1.dataToRender.length)"
     [rowsPerPageOptions]="[2,5,10,15,20]"
-  >
+    [totalRecords]="4"
+    >
+    <!-- [lazy]="true"
+    [pageLinks]="3" -->
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex">
+          <button type="button" pButton pRipple icon="pi pi-file-o" (click)="dt1.exportCSV()" class="p-mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+          <!-- <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+          <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning p-mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+          <button type="button" pButton pRipple icon="pi pi-filter" (click)="dt.exportCSV({selectionOnly:true})" class="p-button-info p-ml-auto" pTooltip="Selection Only" tooltipPosition="bottom"></button> -->
+      </div>
+  </ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th pSortableColumn="name">
@@ -36,27 +45,20 @@
           <input
             pInputText
             type="text"
-            (input)="filter($event, 'name')"
+            (input)="manageFilter($event, 'name')"
             [value]="nameFilter"
             placeholder="Search by Name"
             class="p-column-filter"
           />
         </th>
         <th>
-          <input
-            pInputText
-            type="text"
-            (input)="filter($event, 'country.name')"
-            [value]="countryFilter"
-            placeholder="Search by Country"
-            class="p-column-filter"
-          />
+          <p-dropdown [options]="countryList" (onChange)="manageFilter($event, 'country')" [(ngModel)]="countryFilter" ></p-dropdown>
         </th>
         <th>
           <input
             pInputText
             type="text"
-            (input)="filter($event, 'representative.name')"
+            (input)="manageFilter($event, 'representative')"
             [value]="representativeNameFilter"
             placeholder="Search by Representative"
             class="p-column-filter"
@@ -66,7 +68,7 @@
           <input
             pInputText
             type="text"
-            (input)="filter($event, 'status')"
+            (input)="manageFilter($event, 'status')"
             [value]="statusFilter"
             placeholder="Search by Status"
             class="p-column-filter"
